@@ -42,21 +42,13 @@ const io = socketIo(server,  {
 // }
 // });
 
-// io.on("connection", (socket) => {
 io.on("connection", (socket) => {
     console.log(`User Connected: " ${socket.id}`);
-//     console.log('DataSocket Connected: ' + socket.id);
-//   console.log("New client connected");
-    // hederaTopicStream(socket);
 
     socket.on("authenticate", async (data) => {
         console.log("on.Authenticate: ", data);
         // socket.join(data.user);
         authenticate(socket, data);
-        // console.log("before emit: isAuthorized: " + isAuthorized);
-        // send authentication response to user
-        // socket.emit("authenticate_response", isAuthorized );
-        
     });
 
     socket.on("isUsernameAvailable", async(username) => {
